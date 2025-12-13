@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Reddit Mastermind
+
+An AI-powered content calendar generator for Reddit that creates natural, engaging posts and comments using persona-based personas.
+
+## Features
+
+- **Weekly Content Calendar Generation** - Automatically generates a full week of Reddit content
+- **Persona-Based Content** - Create multiple personas with unique voices and backgrounds
+- **Natural Language Generation** - Ultra-realistic posts and comments that sound human
+- **Smart Topic Expansion** - Automatically expands themes into varied discussion topics
+- **Subreddit Management** - Distribute content across multiple subreddits with smart rotation
+- **Next Week Generation** - Easily generate subsequent weeks with one click
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ (Next.js 14 requires this)
+- npm, yarn, pnpm, or bun
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Navigate to the generate page (default route)
+2. Fill in your company information
+3. Create 2+ personas with unique voices and backgrounds
+4. Add target subreddits
+5. Set your content themes (topics to target)
+6. Choose number of posts per week
+7. Generate your calendar
+8. Use "Generate Next Week" to create subsequent weeks
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+- **LocalStorage** - Client-side data persistence (ready for Supabase migration)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/              # Next.js app router pages
+│   ├── generate/     # Main form page
+│   ├── calendar/     # Calendar display page
+│   └── api/          # API routes
+└── lib/
+    ├── models/       # TypeScript interfaces
+    ├── ai/seeds/     # Seed libraries for content generation
+    └── utils/        # Core algorithms and utilities
+```
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy is using [Vercel](https://vercel.com):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
+
+Then deploy to Vercel or your preferred hosting platform.
+
+## License
+
+This project is part of a technical assessment.

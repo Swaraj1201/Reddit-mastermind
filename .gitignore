@@ -159,3 +159,8 @@ vite.config.ts.timestamp-*
 
 # typescript
 next-env.d.ts
+*.tsbuildinfo
+
+# Documentation files (optional - remove if not needed)
+# REQUIREMENTS_CHECKLIST.md
+# SUBMISSION_READY.md
