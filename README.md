@@ -343,12 +343,4 @@ Built as a demonstration of:
 
 ---
 
-## 🙏 **Acknowledgments**
-
-- Next.js team for the excellent framework
-- TailwindCSS for the utility-first CSS framework
-- The Reddit community for inspiration on natural conversation patterns
-
----
-
 **Happy content planning! 🚀**
