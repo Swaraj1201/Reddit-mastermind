@@ -64,11 +64,3 @@ const stylePrefixes: Record<StyleMode, string[]> = {
 export function getStylePrefix(style: StyleMode): string {
   return pick(stylePrefixes[style]);
 }
-
-/**
- * Picks a random style mode
- */
-export function pickStyleMode(): StyleMode {
-  return pick(['analytical', 'introspective', 'motivational', 'casual'] as StyleMode[]);
-}
-

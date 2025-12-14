@@ -5,7 +5,7 @@ import type {
   Persona,
 } from '@/lib/models/types';
 import { generateHybridPost, generateHybridComment, resetWeekHistory } from './hybridGenerator';
-import { cleanTopic } from './topicTools';
+import { cleanTopic, limitThemesToPost } from './topicTools';
 
 // ====================================================================
 // PART 7: Smart Randomization Helper
@@ -48,17 +48,29 @@ function expandTheme(theme: string): string[] {
 
 /**
  * Expands all themes into a comprehensive list of topics
- * PART 1: Applies cleanTopic() to all expanded topics
+ * FIX 1: Limits themes to 1-2 per topic to prevent long repetitive output
  */
 function expandThemesToTopics(themes: string[]): string[] {
   const allTopics: string[] = [];
+  
+  // FIX 1: For each base theme, create expanded topics
   themes.forEach((theme) => {
-    // Clean the base theme first
     const cleanTheme = cleanTopic(theme);
+    // Expand single theme into variations
     allTopics.push(...expandTheme(cleanTheme).map(cleanTopic));
     // Also include the cleaned base theme
     allTopics.push(cleanTheme);
   });
+  
+  // FIX 1: Also create combined topics (1-2 themes max)
+  if (themes.length >= 2) {
+    // Add some combined topic variations (limited combinations)
+    const combinedTopic = limitThemesToPost(themes);
+    if (combinedTopic && combinedTopic !== themes[0]) {
+      allTopics.push(...expandTheme(combinedTopic).slice(0, 3).map(cleanTopic)); // Limit to 3 variations
+    }
+  }
+  
   return allTopics;
 }
 
@@ -177,7 +189,7 @@ export function generateWeeklyCalendar(
   let subredditIndex = 0;
   let personaIndex = 0;
 
-  // Generate posts for each day of the week
+  // Generate posts for each day of the week (async)
   for (let dayOffset = 0; dayOffset < 7 && posts.length < postsPerWeek; dayOffset++) {
     const currentDate = addDays(weekStart, dayOffset);
     const dateStr = formatDate(currentDate);
@@ -193,7 +205,7 @@ export function generateWeeklyCalendar(
     const remainingPosts = postsPerWeek - posts.length;
     const postsToday = Math.ceil(remainingPosts / remainingDays);
 
-    // Generate posts for this day
+    // Generate posts for this day (async loop)
     for (let i = 0; i < postsToday && posts.length < postsPerWeek; i++) {
       // Select topic (no repeats)
       // PART 1: Topics are already cleaned in expandThemesToTopics()
@@ -243,7 +255,14 @@ export function generateWeeklyCalendar(
 
       // PART 7: Generate text content using hybrid generator
       const postText = generateHybridPost(poster, topic, company);
-      const commentText = generateHybridComment(commenter, topic, company);
+      
+      // FIX 7: Determine post length mode for comment realism
+      // Estimate based on post text length: <50 chars = short, <150 = medium, else = long
+      const postLengthEstimate: 'short' | 'medium' | 'long' = 
+        postText.length < 50 ? 'short' :
+        postText.length < 150 ? 'medium' : 'long';
+      
+      const commentText = generateHybridComment(commenter, topic, company, postLengthEstimate);
 
       // Create calendar post
       // PART 5: Full topic (cleaned) is stored, simplified version used in text

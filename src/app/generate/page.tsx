@@ -202,49 +202,49 @@ export default function GeneratePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#fafafa] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white shadow-xl rounded-lg overflow-hidden">
-          {/* Header Card */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-6">
-            <h1 className="text-3xl font-bold text-white">
+        <div className="bg-white rounded-xl border border-[#e5e7eb] shadow-sm">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 px-8 py-8 rounded-t-xl">
+            <h1 className="text-3xl font-bold text-white mb-2">
               Generate Reddit Content Calendar
             </h1>
-            <p className="text-blue-100 mt-2">
+            <p className="text-indigo-100 text-base">
               Fill in the details below to create your weekly content plan
             </p>
           </div>
 
           <div className="p-8">
             {/* Info Box */}
-            <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-md">
-              <h3 className="text-sm font-semibold text-blue-900 mb-2">
+            <div className="mb-8 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
+              <h3 className="text-sm font-semibold text-indigo-900 mb-1.5">
                 💡 What is this?
               </h3>
-              <p className="text-sm text-blue-800">
+              <p className="text-sm text-[#6b7280] leading-relaxed">
                 This form helps you create a weekly Reddit content calendar. Fill in your company details, create personas (different characters who will post), 
                 choose subreddits where you want to engage, and set your content themes. We'll generate natural-sounding posts and comments that feel authentic.
               </p>
             </div>
 
             {error && (
-              <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-400 rounded-md">
-                <p className="text-red-800 text-sm font-medium">{error}</p>
+              <div className="mb-8 p-4 bg-red-50 border-l-4 border-red-500 rounded-lg animate-in fade-in duration-300">
+                <p className="text-sm text-red-800 font-medium">{error}</p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-10">
               {/* Company Info */}
-              <section className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                <h2 className="text-xl font-semibold text-gray-900 mb-6 pb-3 border-b border-gray-200">
+              <section className="bg-white rounded-xl border border-[#e5e7eb] p-6 shadow-sm">
+                <h2 className="text-xl font-semibold text-[#111827] mb-6 pb-3 border-b border-[#e5e7eb]">
                   Company Information
                 </h2>
                 <div className="grid grid-cols-1 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-[#6b7280] mb-2">
                       Company Name *
                     </label>
-                    <p className="text-xs text-gray-500 mb-2">
+                    <p className="text-xs text-[#6b7280] mb-3">
                       The name of your company or brand
                     </p>
                     <input
@@ -252,31 +252,31 @@ export default function GeneratePage() {
                       required
                       value={company.name}
                       onChange={(e) => updateCompany('name', e.target.value)}
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
+                      className="w-full px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150"
                       placeholder="e.g., TechStart, FitLife, DesignStudio"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-[#6b7280] mb-2">
                       Value Proposition *
                     </label>
-                    <p className="text-xs text-gray-500 mb-2">
+                    <p className="text-xs text-[#6b7280] mb-3">
                       What makes your product or service unique and valuable? This will be subtly mentioned in posts.
                     </p>
                     <textarea
                       required
                       value={company.valueProp}
                       onChange={(e) => updateCompany('valueProp', e.target.value)}
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-y text-gray-900"
+                      className="w-full px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150 resize-y"
                       rows={3}
                       placeholder="e.g., automates workout planning, helps track fitness goals, provides personalized meal plans"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-[#6b7280] mb-2">
                       Ideal Customer *
                     </label>
-                    <p className="text-xs text-gray-500 mb-2">
+                    <p className="text-xs text-[#6b7280] mb-3">
                       Who is your target audience? Describe them in a few words.
                     </p>
                     <input
@@ -284,15 +284,15 @@ export default function GeneratePage() {
                       required
                       value={company.idealCustomer}
                       onChange={(e) => updateCompany('idealCustomer', e.target.value)}
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
+                      className="w-full px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150"
                       placeholder="e.g., fitness enthusiasts, small business owners, college students"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-[#6b7280] mb-2">
                       Tone *
                     </label>
-                    <p className="text-xs text-gray-500 mb-2">
+                    <p className="text-xs text-[#6b7280] mb-3">
                       How should the content sound? Choose: casual, friendly, professional, analytical, or formal
                     </p>
                     <input
@@ -300,7 +300,7 @@ export default function GeneratePage() {
                       required
                       value={company.tone}
                       onChange={(e) => updateCompany('tone', e.target.value)}
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
+                      className="w-full px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150"
                       placeholder="e.g., friendly, professional, casual"
                     />
                   </div>
@@ -308,233 +308,243 @@ export default function GeneratePage() {
               </section>
 
               {/* Personas */}
-              <section className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <div className="flex justify-between items-center mb-6 pb-3 border-b border-gray-200">
-                <h2 className="text-xl font-semibold text-gray-900">Personas</h2>
-                <button
-                  type="button"
-                  onClick={addPersona}
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 text-sm font-medium shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-                >
-                  + Add Persona
-                </button>
-              </div>
-              <div className="space-y-4">
-                {personas.map((persona, index) => (
-                  <div
-                    key={index}
-                    className="p-5 border-2 border-gray-200 rounded-lg bg-gradient-to-br from-gray-50 to-white hover:border-gray-300 transition-colors"
+              <section className="bg-white rounded-xl border border-[#e5e7eb] p-6 shadow-sm">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-[#e5e7eb]">
+                  <h2 className="text-xl font-semibold text-[#111827]">Personas</h2>
+                  <button
+                    type="button"
+                    onClick={addPersona}
+                    className="px-5 py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
-                    <div className="flex justify-between items-center mb-4">
-                      <h3 className="font-semibold text-gray-900">
-                        Persona {index + 1}
-                      </h3>
-                      {personas.length > 1 && (
+                    + Add Persona
+                  </button>
+                </div>
+                <div className="space-y-5">
+                  {personas.map((persona, index) => (
+                    <div
+                      key={index}
+                      className="p-5 border-2 border-[#e5e7eb] rounded-xl bg-white hover:border-indigo-300 transition-all duration-150"
+                    >
+                      <div className="flex justify-between items-center mb-5">
+                        <h3 className="text-base font-semibold text-[#111827]">
+                          Persona {index + 1}
+                        </h3>
+                        {personas.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => removePersona(index)}
+                            className="px-3 py-1.5 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-all duration-150"
+                          >
+                            Remove
+                          </button>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-1 gap-5">
+                        <div>
+                          <label className="block text-sm font-medium text-[#6b7280] mb-2">
+                            Persona Name
+                          </label>
+                          <input
+                            type="text"
+                            value={persona.name}
+                            onChange={(e) => updatePersona(index, 'name', e.target.value)}
+                            className="w-full px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150"
+                            placeholder="e.g., Alex, Sarah, Mike"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-[#6b7280] mb-2">
+                            Background
+                          </label>
+                          <p className="text-xs text-[#6b7280] mb-2">
+                            What's their role or background? This helps shape their perspective.
+                          </p>
+                          <textarea
+                            value={persona.background}
+                            onChange={(e) => updatePersona(index, 'background', e.target.value)}
+                            className="w-full px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150 resize-y"
+                            rows={2}
+                            placeholder="e.g., fitness trainer, software developer, marketing professional"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-[#6b7280] mb-2">
+                            Voice / Communication Style
+                          </label>
+                          <p className="text-xs text-[#6b7280] mb-2">
+                            How do they talk? Choose: casual, friendly, professional, analytical, or formal
+                          </p>
+                          <textarea
+                            value={persona.voice}
+                            onChange={(e) => updatePersona(index, 'voice', e.target.value)}
+                            className="w-full px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150 resize-y"
+                            rows={2}
+                            placeholder="e.g., friendly, analytical, casual"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-[#6b7280] mb-2">
+                            Pain Points
+                          </label>
+                          <p className="text-xs text-[#6b7280] mb-2">
+                            What challenges or frustrations does this persona face? These will be naturally woven into posts.
+                          </p>
+                          <div className="space-y-2">
+                            {persona.painPoints.map((painPoint, pi) => (
+                              <div key={pi} className="flex gap-2">
+                                <input
+                                  type="text"
+                                  value={painPoint}
+                                  onChange={(e) => updatePainPoint(index, pi, e.target.value)}
+                                  className="flex-1 px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150"
+                                  placeholder="e.g., time management, staying motivated, finding resources"
+                                />
+                                {persona.painPoints.length > 1 && (
+                                  <button
+                                    type="button"
+                                    onClick={() => removePainPoint(index, pi)}
+                                    className="px-4 py-2.5 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-all duration-150"
+                                  >
+                                    ×
+                                  </button>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => addPainPoint(index)}
+                            className="mt-3 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors duration-150"
+                          >
+                            + Add Pain Point
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Subreddits */}
+              <section className="bg-white rounded-xl border border-[#e5e7eb] p-6 shadow-sm">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-[#e5e7eb]">
+                  <div>
+                    <h2 className="text-xl font-semibold text-[#111827] mb-1">Subreddits</h2>
+                    <p className="text-sm text-[#6b7280]">
+                      Add the Reddit communities where you want to post. You can type with or without "r/"
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={addSubreddit}
+                    className="px-5 py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    + Add Subreddit
+                  </button>
+                </div>
+                <div className="space-y-3">
+                  {subreddits.map((subreddit, index) => (
+                    <div key={index} className="flex gap-3">
+                      <input
+                        type="text"
+                        value={subreddit}
+                        onChange={(e) => updateSubreddit(index, e.target.value)}
+                        className="flex-1 px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150"
+                        placeholder="e.g., r/fitness, fitness, r/running"
+                      />
+                      {subreddits.length > 1 && (
                         <button
                           type="button"
-                          onClick={() => removePersona(index)}
-                          className="px-3 py-1.5 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 rounded-md transition-colors"
+                          onClick={() => removeSubreddit(index)}
+                          className="px-5 py-2.5 text-sm text-[#6b7280] hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-150 border border-[#e5e7eb] hover:border-red-200"
                         >
                           Remove
                         </button>
                       )}
                     </div>
-                    <div className="grid grid-cols-1 gap-4">
-                      <div>
-                        <label className="block text-xs font-medium text-gray-600 mb-1">
-                          Persona Name
-                        </label>
-                        <input
-                          type="text"
-                          value={persona.name}
-                          onChange={(e) => updatePersona(index, 'name', e.target.value)}
-                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
-                          placeholder="e.g., Alex, Sarah, Mike"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-medium text-gray-600 mb-1">
-                          Background
-                        </label>
-                        <p className="text-xs text-gray-500 mb-2">
-                          What's their role or background? This helps shape their perspective.
-                        </p>
-                        <textarea
-                          value={persona.background}
-                          onChange={(e) => updatePersona(index, 'background', e.target.value)}
-                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-y text-gray-900"
-                          rows={2}
-                          placeholder="e.g., fitness trainer, software developer, marketing professional"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-medium text-gray-600 mb-1">
-                          Voice / Communication Style
-                        </label>
-                        <p className="text-xs text-gray-500 mb-2">
-                          How do they talk? Choose: casual, friendly, professional, analytical, or formal
-                        </p>
-                        <textarea
-                          value={persona.voice}
-                          onChange={(e) => updatePersona(index, 'voice', e.target.value)}
-                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-y text-gray-900"
-                          rows={2}
-                          placeholder="e.g., friendly, analytical, casual"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-medium text-gray-600 mb-1">
-                          Pain Points
-                        </label>
-                        <p className="text-xs text-gray-500 mb-2">
-                          What challenges or frustrations does this persona face? These will be naturally woven into posts.
-                        </p>
-                        <div className="space-y-2">
-                          {persona.painPoints.map((painPoint, pi) => (
-                            <div key={pi} className="flex gap-2">
-                              <input
-                                type="text"
-                                value={painPoint}
-                                onChange={(e) => updatePainPoint(index, pi, e.target.value)}
-                                className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
-                                placeholder="e.g., time management, staying motivated, finding resources"
-                              />
-                              {persona.painPoints.length > 1 && (
-                                <button
-                                  type="button"
-                                  onClick={() => removePainPoint(index, pi)}
-                                  className="px-4 py-2.5 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors"
-                                >
-                                  ×
-                                </button>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => addPainPoint(index)}
-                          className="mt-2 text-sm text-blue-600 hover:text-blue-800 font-medium"
-                        >
-                          + Add Pain Point
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              </section>
-
-              {/* Subreddits */}
-              <section className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <div className="flex justify-between items-center mb-4 pb-3 border-b border-gray-200">
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-900">Subreddits</h2>
-                  <p className="text-xs text-gray-500 mt-1">
-                    Add the Reddit communities where you want to post. You can type with or without "r/"
-                  </p>
+                  ))}
                 </div>
-                <button
-                  type="button"
-                  onClick={addSubreddit}
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 text-sm font-medium shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-                >
-                  + Add Subreddit
-                </button>
-              </div>
-              <div className="space-y-3">
-                {subreddits.map((subreddit, index) => (
-                  <div key={index} className="flex gap-3">
-                    <input
-                      type="text"
-                      value={subreddit}
-                      onChange={(e) => updateSubreddit(index, e.target.value)}
-                      className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
-                      placeholder="e.g., r/fitness, fitness, r/running"
-                    />
-                    {subreddits.length > 1 && (
-                      <button
-                        type="button"
-                        onClick={() => removeSubreddit(index)}
-                        className="px-4 py-2.5 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors"
-                      >
-                        Remove
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
               </section>
 
               {/* Themes */}
-              <section className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <div className="flex justify-between items-center mb-4 pb-3 border-b border-gray-200">
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-900">Themes</h2>
-                  <p className="text-xs text-gray-500 mt-1">
-                    Main topics or subjects for your content. These will be expanded into various discussion topics.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={addTheme}
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 text-sm font-medium shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-                >
-                  + Add Theme
-                </button>
-              </div>
-              <div className="space-y-3">
-                {themes.map((theme, index) => (
-                  <div key={index} className="flex gap-3">
-                    <input
-                      type="text"
-                      value={theme}
-                      onChange={(e) => updateTheme(index, e.target.value)}
-                      className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
-                      placeholder="e.g., fitness, productivity, entrepreneurship, health"
-                    />
-                    {themes.length > 1 && (
-                      <button
-                        type="button"
-                        onClick={() => removeTheme(index)}
-                        className="px-4 py-2.5 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors"
-                      >
-                        Remove
-                      </button>
-                    )}
+              <section className="bg-white rounded-xl border border-[#e5e7eb] p-6 shadow-sm">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-[#e5e7eb]">
+                  <div>
+                    <h2 className="text-xl font-semibold text-[#111827] mb-1">Themes</h2>
+                    <p className="text-sm text-[#6b7280]">
+                      Main topics or subjects for your content. These will be expanded into various discussion topics.
+                    </p>
                   </div>
-                ))}
-              </div>
+                  <button
+                    type="button"
+                    onClick={addTheme}
+                    className="px-5 py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    + Add Theme
+                  </button>
+                </div>
+                <div className="space-y-3">
+                  {themes.map((theme, index) => (
+                    <div key={index} className="flex gap-3">
+                      <input
+                        type="text"
+                        value={theme}
+                        onChange={(e) => updateTheme(index, e.target.value)}
+                        className="flex-1 px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150"
+                        placeholder="e.g., fitness, productivity, entrepreneurship, health"
+                      />
+                      {themes.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeTheme(index)}
+                          className="px-5 py-2.5 text-sm text-[#6b7280] hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-150 border border-[#e5e7eb] hover:border-red-200"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </section>
 
-            {/* Posts per week */}
-            <section className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Posts Per Week
-              </label>
-              <p className="text-xs text-gray-500 mb-3">
-                How many posts do you want to generate? Posts will be distributed across Monday-Sunday. (Recommended: 5-10)
-              </p>
-              <input
-                type="number"
-                min="1"
-                max="28"
-                value={postsPerWeek}
-                onChange={(e) => setPostsPerWeek(parseInt(e.target.value) || 5)}
-                className="w-32 px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900"
-                placeholder="5"
-              />
-            </section>
+              {/* Posts per week */}
+              <section className="bg-white rounded-xl border border-[#e5e7eb] p-6 shadow-sm">
+                <label className="block text-sm font-medium text-[#6b7280] mb-2">
+                  Posts Per Week
+                </label>
+                <p className="text-sm text-[#6b7280] mb-4">
+                  How many posts do you want to generate? Posts will be distributed across Monday-Sunday. (Recommended: 5-10)
+                </p>
+                <input
+                  type="number"
+                  min="1"
+                  max="28"
+                  value={postsPerWeek}
+                  onChange={(e) => setPostsPerWeek(parseInt(e.target.value) || 5)}
+                  className="w-32 px-4 py-2.5 text-base text-[#111827] border border-[#e5e7eb] rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150"
+                  placeholder="5"
+                />
+              </section>
 
               {/* Submit button */}
-              <div className="pt-2">
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full px-6 py-3.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg transition-all transform hover:scale-[1.02] active:scale-[0.98]"
-              >
-                {loading ? 'Generating Calendar...' : 'Generate Calendar'}
-              </button>
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full px-6 py-3.5 bg-indigo-600 text-white text-base font-semibold rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md transition-all duration-150 transform hover:scale-[1.01] active:scale-[0.99]"
+                >
+                  {loading ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Generating content...
+                    </span>
+                  ) : (
+                    'Generate Calendar'
+                  )}
+                </button>
               </div>
             </form>
           </div>
